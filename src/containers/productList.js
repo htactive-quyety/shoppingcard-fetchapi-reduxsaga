@@ -2,13 +2,11 @@ import React from 'react'
 import '../asset/css/productList.css'
 import { Row, Col } from 'antd'
 import { useSelector } from 'react-redux'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 
 const ProductList = () => {
-
-  // const history = useHistory();
   const todos = useSelector(state => state.todos.productList);
   return (
     
@@ -20,7 +18,7 @@ const ProductList = () => {
           <div className='flex-container'>
             {todos.map((contact, index) => (
               <div className='showProduct' key={contact.id}>
-                <Link to='/product-detail' id={contact.id}>
+                <Link to={`/product-detail/${contact.id}` } >
                 <img src={contact.image} alt="img product" />
                 <div className='productInfor'>
                 <strong>{contact.name} &#10084;</strong>

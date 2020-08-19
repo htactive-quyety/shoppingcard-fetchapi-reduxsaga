@@ -3,6 +3,6 @@ import cardSagas from './sagas';
 
 export function* rootSaga(){
     yield all ([
-        call(cardSagas)
+        cardSagas()
     ]);
 }

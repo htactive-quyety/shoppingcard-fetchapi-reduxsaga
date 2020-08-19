@@ -1,5 +1,6 @@
 const initialState = {
-    productList: []
+    productList: [],
+    userList:[]
 };
 
 
@@ -9,6 +10,11 @@ const todos = (state = initialState, action) => {
             return {
                 state,
                 productList: action.payload
+            };
+            case 'FETCH_USER':
+            return {
+                state,
+                userList: action.payload
             };
         // case 'GETID_PRODUCTS':
         //     return {

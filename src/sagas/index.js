@@ -1,8 +1,9 @@
-import {put, call, all} from 'redux-saga/effects'
-import {getListPD} from '../api/index'
-import {fetchProducts} from '../actions'
+import {put, call, all, takeLatest, takeEvery} from 'redux-saga/effects'
+import {getListPD,getListUser} from '../api/index'
+import {fetchProducts,fetchUser} from '../actions'
+import types from '../actions/actionType';
 
-export function* getDataFromAPi(){
+ function* getDataFromAPiPD(){
     try {
         const data = yield getListPD();
         yield put(fetchProducts(data));
@@ -11,10 +12,32 @@ export function* getDataFromAPi(){
     }
 }
 
+// export function* getDataFromAPiUser(){
+//     try {
+//         const data = yield getListUser();
+//         yield put(fetchUser(data));
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
+
+
+
+
+
+
+//  function* watchToggleUser() { 
+//     yield takeLatest(getDataFromAPiUser)
+// }
+// function* watchTogglePD() { 
+//     yield takeEvery('FETCH_PRODUCTS',getDataFromAPiPD);
+// }
+
+
+
 export default function* cardSagas() { 
     yield all([
-        call(getDataFromAPi)
+        call(getDataFromAPiPD)
     ]);
 }
-
 
